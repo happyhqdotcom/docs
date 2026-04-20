@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "requirements",
+    "models-and-keys",
+    "file-storage",
+    "self-host",
+    "configuration",
+    "logs-and-debugging",
+    "privacy-and-security"
+  ]
+}

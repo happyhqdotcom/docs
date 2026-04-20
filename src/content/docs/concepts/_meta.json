@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "q",
+    "streams",
+    "tasks",
+    "runs",
+    "playbooks",
+    "specs",
+    "chat",
+    "uploads-and-files",
+    "local-first"
+  ]
+}
