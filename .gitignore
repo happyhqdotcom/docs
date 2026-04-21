@@ -36,6 +36,7 @@ next-env.d.ts
 
 # local tooling
 /.claude/settings.local.json
+/.claude/scheduled_tasks.lock
 
 # cloudflare / opennext
 /.open-next

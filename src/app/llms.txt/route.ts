@@ -11,7 +11,7 @@ export function GET() {
   const lines: string[] = [
     '# HappyHQ',
     '',
-    '> A modern knowledge base for high performance — the shared brain for teams.',
+    '> The AI workspace for everyday work. You teach it how you do anything, and it does that work for you — the way you would have done it.',
     '',
   ]
 
