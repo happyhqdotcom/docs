@@ -5,7 +5,6 @@ import { Nunito } from 'next/font/google'
 import { Providers } from '@/app/providers'
 import { Layout, type SurfaceInfo } from '@/components/Layout'
 
-import { getWaitlistStatus } from '@/app/actions/waitlist'
 import { KeyboardShortcuts } from '@/components/KeyboardShortcuts'
 import PostHogPageView from '@/components/PosthogPageView'
 import { type Surface } from '@/lib/frontmatter-schemas'
@@ -18,7 +17,6 @@ import {
   type NavTree,
 } from '@/lib/source'
 import '@/styles/tailwind.css'
-import { cookies } from 'next/headers'
 
 const nunito = Nunito({
   subsets: ['latin'],
@@ -35,15 +33,11 @@ export const metadata: Metadata = {
   description: 'A modern knowledge base for high performance.',
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const isOnWaitlist = await getWaitlistStatus()
-  const cookieStore = await cookies()
-  const hasClerkSession = cookieStore.has('__session')
-  const knownUser = cookieStore.has('knownUser')
   const navigations: Record<Surface, NavTree> = Object.fromEntries(
     getSurfaces().map((s) => [s, getNavigation(s)]),
   ) as Record<Surface, NavTree>
@@ -62,13 +56,7 @@ export default async function RootLayout({
     >
       <body className="flex min-h-full bg-[oklch(0.93_0.01_80)] text-[17px] font-medium dark:bg-[#0F0A14]">
         <Providers>
-          <Layout
-            isOnWaitlist={isOnWaitlist}
-            hasClerkSession={hasClerkSession}
-            knownUser={knownUser}
-            navigations={navigations}
-            surfaces={surfaces}
-          >
+          <Layout navigations={navigations} surfaces={surfaces}>
             {children}
             <PostHogPageView />
             <KeyboardShortcuts />

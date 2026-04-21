@@ -24,16 +24,10 @@ function resolveSurface(
 
 export function Layout({
   children,
-  isOnWaitlist,
-  hasClerkSession,
-  knownUser,
   navigations,
   surfaces,
 }: {
   children: React.ReactNode
-  isOnWaitlist: boolean
-  hasClerkSession: boolean
-  knownUser: boolean
   navigations: Record<Surface, NavTree>
   surfaces: SurfaceInfo[]
 }) {
@@ -44,12 +38,7 @@ export function Layout({
 
   return (
     <div className="flex w-full flex-col">
-      <Header
-        isOnWaitlist={isOnWaitlist}
-        hasClerkSession={hasClerkSession}
-        knownUser={knownUser}
-        navigation={navigation}
-      />
+      <Header navigation={navigation} />
 
       {isHomePage && false && <Hero />}
 

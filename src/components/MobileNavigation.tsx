@@ -23,15 +23,9 @@ function CloseOnNavigation({ close }: { close: () => void }) {
 
 export function MobileNavigation({
   insideDialog = false,
-  isOnWaitlist,
-  hasClerkSession,
-  knownUser,
   navigation,
 }: {
   insideDialog?: boolean
-  isOnWaitlist: boolean
-  hasClerkSession: boolean
-  knownUser: boolean
   navigation: NavTree
 }) {
   let [isOpen, setIsOpen] = useState(false)
@@ -73,13 +67,7 @@ export function MobileNavigation({
         aria-label="Navigation"
       >
         <div className="relative h-full w-full overflow-y-auto bg-[oklch(0.93_0.01_80)] dark:bg-[#0F0A14]">
-          <Header
-            insideDialog={insideDialog}
-            isOnWaitlist={isOnWaitlist}
-            hasClerkSession={hasClerkSession}
-            knownUser={knownUser}
-            navigation={navigation}
-          />
+          <Header insideDialog={insideDialog} navigation={navigation} />
 
           <DialogPanel className="min-h-full overflow-y-auto px-4 pt-5 pb-12 sm:px-6">
             <Button

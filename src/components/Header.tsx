@@ -11,15 +11,9 @@ import { useEffect, useState } from 'react'
 
 export function Header({
   insideDialog = false,
-  isOnWaitlist,
-  hasClerkSession,
-  knownUser,
   navigation,
 }: {
   insideDialog?: boolean
-  isOnWaitlist: boolean
-  hasClerkSession: boolean
-  knownUser: boolean
   navigation: NavTree
 }) {
   let [isScrolled, setIsScrolled] = useState(false)
@@ -64,16 +58,9 @@ export function Header({
               <Search navigation={navigation} />
             </div>
             <ThemeSelector className="relative z-10" />
-            <ActionButton
-              isOnWaitlist={isOnWaitlist}
-              hasClerkSession={hasClerkSession}
-              knownUser={knownUser}
-            />
+            <ActionButton />
             <MobileNavigation
               insideDialog={insideDialog}
-              isOnWaitlist={isOnWaitlist}
-              hasClerkSession={hasClerkSession}
-              knownUser={knownUser}
               navigation={navigation}
             />
           </div>
