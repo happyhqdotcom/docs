@@ -6,12 +6,10 @@ export const dynamic = 'force-static'
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
-  'http://localhost:3000'
+  'https://happyhq.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const entries: MetadataRoute.Sitemap = [
-    { url: BASE_URL, changeFrequency: 'weekly', priority: 1 },
-  ]
+  const entries: MetadataRoute.Sitemap = []
 
   for (const surface of getSurfaces()) {
     for (const page of getPages(surface)) {

@@ -7,5 +7,18 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  }
+  },
+  "routes": [
+    { "pattern": "preview.happyhq.com/docs", "zone_name": "happyhq.com" },
+    { "pattern": "preview.happyhq.com/docs/*", "zone_name": "happyhq.com" },
+    { "pattern": "preview.happyhq.com/guides", "zone_name": "happyhq.com" },
+    { "pattern": "preview.happyhq.com/guides/*", "zone_name": "happyhq.com" },
+    { "pattern": "preview.happyhq.com/changelog", "zone_name": "happyhq.com" },
+    { "pattern": "preview.happyhq.com/changelog/*", "zone_name": "happyhq.com" },
+    { "pattern": "preview.happyhq.com/api", "zone_name": "happyhq.com" },
+    { "pattern": "preview.happyhq.com/api/*", "zone_name": "happyhq.com" },
+    { "pattern": "preview.happyhq.com/_next/*", "zone_name": "happyhq.com" },
+    { "pattern": "preview.happyhq.com/og/docs/*", "zone_name": "happyhq.com" },
+    { "pattern": "preview.happyhq.com/og/changelog/*", "zone_name": "happyhq.com" }
+  ]
 }
