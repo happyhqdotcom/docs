@@ -24,7 +24,7 @@ export async function GET(
   const title = page?.frontmatter.title ?? 'HappyHQ Docs'
   const description =
     page?.frontmatter.description ??
-    'The shared brain for teams — a modern knowledge base for high performance.'
+    'The AI workspace for everyday work.'
   const urlSuffix = page?.url.replace(/^\/docs/, '') ?? ''
 
   return new ImageResponse(

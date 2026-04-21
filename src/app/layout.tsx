@@ -33,9 +33,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     template: '%s - HappyHQ',
-    default: 'HappyHQ — The shared brain for teams.',
+    default: 'HappyHQ — The AI workspace for everyday work.',
   },
-  description: 'A modern knowledge base for high performance.',
+  description:
+    'The AI workspace for everyday work. You teach it how you do anything, and it does that work for you — the way you would have done it.',
 }
 
 export default function RootLayout({

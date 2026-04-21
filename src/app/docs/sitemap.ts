@@ -15,7 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const page of getPages(surface)) {
       entries.push({
         url: `${BASE_URL}${page.url}`,
-        lastModified: page.frontmatter.lastupdated,
+        lastModified: page.frontmatter.lastupdated
+          ? new Date(page.frontmatter.lastupdated)
+          : undefined,
         changeFrequency: surface === 'changelog' ? 'never' : 'weekly',
       })
     }

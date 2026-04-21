@@ -20,6 +20,7 @@
     { "pattern": "preview.happyhq.com/api", "zone_name": "happyhq.com" },
     { "pattern": "preview.happyhq.com/api/*", "zone_name": "happyhq.com" },
     { "pattern": "preview.happyhq.com/_next/*", "zone_name": "happyhq.com" },
+    { "pattern": "preview.happyhq.com/og/docs", "zone_name": "happyhq.com" },
     { "pattern": "preview.happyhq.com/og/docs/*", "zone_name": "happyhq.com" },
     { "pattern": "preview.happyhq.com/og/changelog/*", "zone_name": "happyhq.com" }
   ]
