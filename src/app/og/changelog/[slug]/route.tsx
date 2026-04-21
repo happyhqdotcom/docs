@@ -17,7 +17,7 @@ export async function GET(
   { params }: { params: Promise<Params> },
 ) {
   const { slug } = await params
-  const page = getPage('changelog', [slug])
+  const page = await getPage('changelog', [slug])
   const title = page?.frontmatter.title ?? 'HappyHQ Changelog'
   const description = page?.frontmatter.description ?? ''
   const date = page?.frontmatter.date ?? ''

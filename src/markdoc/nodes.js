@@ -52,7 +52,6 @@ const nodes = {
       language: { type: String },
       title: { type: String },
       lineNumbers: { type: Boolean },
-      twoslash: { type: Boolean },
     },
   },
 }

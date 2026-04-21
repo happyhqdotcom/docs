@@ -36,3 +36,11 @@ next-env.d.ts
 
 # local tooling
 /.claude/settings.local.json
+
+# cloudflare / opennext
+/.open-next
+/.wrangler
+cloudflare-env.d.ts
+
+# build-time content manifest (regenerated on every build)
+/src/content.generated

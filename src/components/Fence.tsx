@@ -9,16 +9,14 @@ export async function Fence({
   language,
   title,
   lineNumbers = false,
-  twoslash = false,
 }: {
   children: string
   language: string
   title?: string
   lineNumbers?: boolean
-  twoslash?: boolean
 }) {
   let code = children.trimEnd()
-  let html = await highlight(code, language, { twoslash })
+  let html = await highlight(code, language)
 
   return (
     <div className="not-prose scheme-dark group/code-block rounded-xl bg-zinc-950">

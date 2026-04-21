@@ -450,31 +450,6 @@ Webhook delivery is currently degraded. We are investigating.
 
 ---
 
-## Twoslash
-
-Set `twoslash=true` on a TypeScript fence to enable [Twoslash](https://shiki.style/packages/twoslash) hover type-info. The annotations below are produced by the TypeScript compiler at build time — hover the highlighted identifiers to see their inferred types.
-
-```ts {% title="twoslash-demo.ts" twoslash=true %}
-type Memory = {
-  id: string
-  title: string
-  createdAt: Date
-  tags: string[]
-}
-
-const memory: Memory = {
-  id: 'mem_01',
-  title: 'Ship the docs',
-  createdAt: new Date(),
-  tags: ['docs', 'launch'],
-}
-
-const titles = [memory].map((m) => m.title)
-//                                   ^?
-```
-
----
-
 ## Keyboard shortcuts
 
 Press <kbd>?</kbd> anywhere on this site to open a dialog showing the available keyboard shortcuts. It's mounted site-wide so the help is always one key away.
