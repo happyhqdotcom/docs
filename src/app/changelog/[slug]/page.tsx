@@ -27,7 +27,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  const page = getPage('changelog', [slug])
+  const page = await getPage('changelog', [slug])
   if (!page) return {}
   const override = page.frontmatter.nextjs?.metadata
   const title = override?.title ?? page.frontmatter.title
@@ -61,7 +61,7 @@ export async function generateMetadata({
 
 export default async function ChangelogEntry({ params }: PageProps) {
   const { slug } = await params
-  const page = getPage('changelog', [slug])
+  const page = await getPage('changelog', [slug])
   if (!page) notFound()
 
   const ast = Markdoc.parse(page.rawSource)

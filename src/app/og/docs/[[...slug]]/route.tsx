@@ -6,8 +6,9 @@ export const dynamic = 'force-static'
 
 const SIZE = { width: 1200, height: 630 } as const
 
-export function generateStaticParams() {
-  return getPages('docs').map((page) => ({
+export async function generateStaticParams() {
+  const pages = await getPages('docs')
+  return pages.map((page) => ({
     slug: page.slug.length === 0 ? undefined : page.slug,
   }))
 }
@@ -19,7 +20,7 @@ export async function GET(
   { params }: { params: Promise<Params> },
 ) {
   const { slug = [] } = await params
-  const page = getPage('docs', slug)
+  const page = await getPage('docs', slug)
   const title = page?.frontmatter.title ?? 'HappyHQ Docs'
   const description =
     page?.frontmatter.description ??

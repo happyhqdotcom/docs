@@ -20,7 +20,7 @@ export async function GET(
   const { slug = [] } = await params
   const parsed = parseSurfaceSlug(slug)
   if (!parsed) return new Response('Not Found', { status: 404 })
-  const page = getPage(parsed.surface, parsed.contentSlug)
+  const page = await getPage(parsed.surface, parsed.contentSlug)
   if (!page) return new Response('Not Found', { status: 404 })
   return new Response(renderLLMPage(page), {
     headers: {
@@ -30,8 +30,9 @@ export async function GET(
   })
 }
 
-export function generateStaticParams() {
-  return getPages().map((page) => {
+export async function generateStaticParams() {
+  const pages = await getPages()
+  return pages.map((page) => {
     const parts = page.url.split('/').filter(Boolean)
     return { slug: parts }
   })

@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next'
 
 import { getPages, getSurfaces } from '@/lib/source'
 
+export const dynamic = 'force-static'
+
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
   'http://localhost:3000'

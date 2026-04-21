@@ -1,17 +1,14 @@
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare'
 import withSearch from './src/markdoc/search.mjs'
+
+initOpenNextCloudflareForDev()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  assetPrefix: '/_content',
-  // Twoslash pulls in @typescript/vfs which uses Node-native `path` /
-  // dynamic requires that Webpack can't bundle. Marking them as externals
-  // lets Next require them straight from node_modules at runtime.
-  serverExternalPackages: [
-    'typescript',
-    '@typescript/vfs',
-    'twoslash',
-    '@shikijs/twoslash',
-  ],
+  // No `assetPrefix`. Next emits Next.js assets at `/_next/*`; the CF Worker's
+  // ASSETS binding finds them in `.open-next/assets/_next/*` at those same
+  // paths. The compose Worker in front of this origin also routes `/_next/*`
+  // to this origin so assets resolve through the composed domain too.
   async rewrites() {
     return [
       // /<surface>/<path>.md → /raw/<surface>/<path>

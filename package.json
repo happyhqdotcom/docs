@@ -4,11 +4,15 @@
   "packageManager": "pnpm@10.2.1",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "predev": "node scripts/build-content-manifest.mjs",
+    "dev": "node scripts/watch-content.mjs & next dev",
+    "prebuild": "node scripts/build-content-manifest.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check:links": "node scripts/check-links.ts"
+    "check:links": "node scripts/check-links.ts",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
@@ -16,8 +20,12 @@
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.2.0",
     "@markdoc/markdoc": "^0.5.0",
+    "@opennextjs/cloudflare": "^1.19.2",
+    "@shikijs/core": "^4.0.2",
+    "@shikijs/engine-javascript": "^4.0.2",
+    "@shikijs/langs": "^4.0.2",
+    "@shikijs/themes": "^4.0.2",
     "@shikijs/transformers": "^4.0.2",
-    "@shikijs/twoslash": "^4.0.2",
     "@sindresorhus/slugify": "^3.0.0",
     "@tailwindcss/postcss": "^4.1.15",
     "@tailwindcss/typography": "^0.5.19",
@@ -27,7 +35,7 @@
     "flexsearch": "^0.8.212",
     "js-yaml": "^4.1.1",
     "lucide-react": "^0.546.0",
-    "next": "15.5.9",
+    "next": "15.5.15",
     "next-themes": "^0.4.4",
     "posthog-js": "^1.215.5",
     "react": "19.2.0",
@@ -36,7 +44,6 @@
     "shiki": "^4.0.2",
     "simple-functional-loader": "^1.2.1",
     "tailwindcss": "^4.1.15",
-    "twoslash": "^0.3.8",
     "zod": "^4.3.6"
   },
   "devDependencies": {
@@ -49,6 +56,7 @@
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.7.1",
     "sharp": "0.34.4",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.84.0"
   }
 }

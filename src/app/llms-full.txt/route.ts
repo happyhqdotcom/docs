@@ -9,7 +9,7 @@ import {
 
 export const dynamic = 'force-static'
 
-export function GET() {
+export async function GET() {
   const preamble =
     '# HappyHQ — Full Content\n\n' +
     '> This file concatenates every page across every surface for LLM ingestion.'
@@ -26,15 +26,18 @@ export function GET() {
             .replace(/^\/[^/]+/, '')
             .split('/')
             .filter(Boolean)
-          const page = getPage(surface, slugParts)
+          const page = await getPage(surface, slugParts)
           if (page) parts.push(renderLLMPage(page))
         }
       }
       continue
     }
 
-    const entries = getPages(surface)
-    for (const page of entries) parts.push(renderLLMPage(page))
+    const metas = getPages(surface)
+    for (const meta of metas) {
+      const page = await getPage(surface, meta.slug)
+      if (page) parts.push(renderLLMPage(page))
+    }
   }
 
   return new Response(parts.join('\n\n---\n\n'), {
