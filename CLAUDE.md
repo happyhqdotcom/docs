@@ -7,7 +7,8 @@ Working notes for this repo. Kept brief.
 Two environments, each producing its own Cloudflare worker. Always run with `pnpm run` (not `pnpm`) since pnpm's built-in workspace `deploy` command shadows npm scripts.
 
 - `pnpm run deploy:preview` — builds with `NEXT_PUBLIC_SITE_URL=https://preview.happyhq.com` and deploys the `docs-preview` worker. Bound to `preview.happyhq.com/*` route patterns and reachable at `docs-preview.happyhq.workers.dev`.
-- `pnpm run deploy:production` — builds with `NEXT_PUBLIC_SITE_URL=https://happyhq.com` and deploys the `docs` worker. `workers_dev` is off (no `*.workers.dev` URL). Production `happyhq.com/*` routes are **already declared** in `[env.production].routes` but remain unbound until this command runs — running it is the cutover action itself. Do not run it casually.
+- `pnpm run deploy:production` — builds with `NEXT_PUBLIC_SITE_URL=https://happyhq.com` and deploys the `docs` worker. `workers_dev` is off (no `*.workers.dev` URL). `[env.production].routes` is intentionally empty so this command refreshes the worker's code without binding anything to `happyhq.com`. Route patterns are added to the config as an explicit cutover step — see the Launch checklist in the welcome repo.
+- `pnpm exec wrangler versions upload --env production` — uploads a new version of the `docs` worker and returns an unlisted versioned URL for pre-cutover smoke testing, without touching the current live version.
 
 `wrangler.jsonc` uses `[env.preview]` and `[env.production]` blocks. Never deploy without `--env` — wrangler would fall back to the top-level config and might overwrite production state. `preview_urls = true` on both envs so you can visit versioned preview URLs for testing before bound routes exist.
 
