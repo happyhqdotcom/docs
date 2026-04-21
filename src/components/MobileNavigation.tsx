@@ -71,7 +71,7 @@ export function MobileNavigation({
 
           <DialogPanel className="min-h-full overflow-y-auto px-4 pt-5 pb-12 sm:px-6">
             <Button
-              href="https://happyhq.com/"
+              href="/waitlist"
               className="flex justify-center md:hidden"
             >
               Join the waitlist
