@@ -36,7 +36,7 @@ export function Header({
         <div className="lg:flex lg:flex-none lg:items-center">
           <div className="w-48 lg:w-64 xl:w-72">
             <Link
-              href="https://happyhq.com"
+              href="/"
               aria-label="Back to HappyHQ homepage"
               className="flex items-center"
             >
