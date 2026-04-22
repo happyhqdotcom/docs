@@ -61,7 +61,7 @@ function card({ title, description, eyebrow, date }) {
         display: 'flex',
         flexDirection: 'column',
         padding: '60px 80px',
-        background: '#F5EDDE',
+        background: '#EDE9E3',
         fontFamily: 'Inter',
         position: 'relative',
       },
