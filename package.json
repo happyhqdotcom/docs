@@ -6,7 +6,8 @@
   "scripts": {
     "predev": "node scripts/build-content-manifest.mjs",
     "dev": "node scripts/watch-content.mjs & next dev",
-    "prebuild": "node scripts/build-content-manifest.mjs",
+    "prebuild": "pnpm run build:pre",
+    "build:pre": "node scripts/build-content-manifest.mjs && node scripts/generate-og.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -48,14 +49,17 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@types/js-yaml": "^4.0.9",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@types/react-highlight-words": "^0.20.0",
     "eslint": "^9.38.0",
     "eslint-config-next": "15.5.7",
+    "gray-matter": "^4.0.3",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.7.1",
+    "satori": "^0.26.0",
     "sharp": "0.34.4",
     "typescript": "^5.9.3",
     "wrangler": "^4.84.0"

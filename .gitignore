@@ -45,3 +45,6 @@ cloudflare-env.d.ts
 
 # build-time content manifest (regenerated on every build)
 /src/content.generated
+
+# build-time OG images (regenerated on every build)
+/public/og
