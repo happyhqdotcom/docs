@@ -1,10 +1,7 @@
 ---
 title: Kitchen Sink Doc
+description: A temporary kitchen sink doc to showcase all of the components and syntax of creating docs in this repo.
 hidden: true
-nextjs:
-  metadata:
-    title: Kitchen Sink Doc
-    description: A temporary kitchen sink doc to showcase all of the components and syntax of creating docs in this repo.
 ---
 
 A temporary kitchen sink doc to showcase all of the components and syntax of creating docs in this repo.

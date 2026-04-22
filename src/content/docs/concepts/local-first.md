@@ -1,9 +1,9 @@
 ---
 title: What "local-first" means for your data
+description: Local-first means your work lives on your machine, in open formats, readable without HappyHQ. No cloud lock-in, no hidden memory, no renting your own files back.
 nextjs:
   metadata:
     title: Local-first AI — what it means for your data in HappyHQ
-    description: Local-first means your work lives on your machine, in open formats, readable without HappyHQ. No cloud lock-in, no hidden memory, no renting your own files back.
 ---
 
 Local-first means your work lives on your computer, in plain files that belong to you — not on our servers, and not in formats we control. Your files are there with or without HappyHQ running. If HappyHQ disappeared tomorrow, your work would still be sitting exactly where you left it.

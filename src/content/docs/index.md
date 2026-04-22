@@ -1,5 +1,6 @@
 ---
 title: What is HappyHQ?
+description: The open-source, local-first AI workspace you can teach to do your work.
 nextjs:
   metadata:
     title: HappyHQ — the AI workspace for everyday work
