@@ -24,10 +24,6 @@ The HappyHQ docs are written for non-technical users first. If you're contributi
 - **Every claim should be true.** If HappyHQ doesn't do something, don't write as if it does. When in doubt, ship smaller and more accurate.
 - **Voice matches the [hello-world launch post](https://happyhq.com/blog/hello-world) and the [OLY manifesto](https://happyhq.com/blog/open-local-yours).** Short sentences. Warm. Direct. No hype.
 
-## CLA
-
-Contributions require agreeing to our [Contributor License Agreement](https://happyhq.com/legal/cla). Signing instructions will be wired up on PRs shortly; for now, please read the CLA and confirm in your PR description that you agree to its terms.
-
 ## Setup
 
 1. Install **Node.js 20+** and **pnpm 10.2.1+**.
