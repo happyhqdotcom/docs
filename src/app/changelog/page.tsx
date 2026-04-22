@@ -10,13 +10,13 @@ export const metadata: Metadata = {
     title: 'Changelog',
     description: 'Recent changes and releases across HappyHQ.',
     type: 'website',
-    images: [{ url: '/og/changelog.png', width: 1200, height: 630 }],
+    images: [{ url: '/og/changelog/_root.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Changelog',
     description: 'Recent changes and releases across HappyHQ.',
-    images: ['/og/changelog.png'],
+    images: ['/og/changelog/_root.png'],
   },
 }
 
