@@ -72,7 +72,7 @@ async function main() {
     const slug = slugFromPath(file, DOCS_SRC)
     const out =
       slug.length === 0
-        ? join(OUT_DIR, 'docs.png')
+        ? join(OUT_DIR, 'docs', '_root.png')
         : join(OUT_DIR, 'docs', ...slug.slice(0, -1), `${slug[slug.length - 1]}.png`)
     tasks.push(
       writeCard(out, {
@@ -110,7 +110,7 @@ async function main() {
 
   // Changelog index
   tasks.push(
-    writeCard(join(OUT_DIR, 'changelog.png'), {
+    writeCard(join(OUT_DIR, 'changelog', '_root.png'), {
       title: "What's new",
       description: 'Recent changes and releases across HappyHQ.',
       eyebrow: 'Changelog',
