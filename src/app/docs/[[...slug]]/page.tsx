@@ -32,7 +32,8 @@ export async function generateMetadata({
   const override = page.frontmatter.nextjs?.metadata
   const title = override?.title ?? page.frontmatter.title
   const description = override?.description ?? page.frontmatter.description
-  const ogPath = slug.length === 0 ? '/og/docs' : `/og/docs/${slug.join('/')}`
+  const ogPath =
+    slug.length === 0 ? '/og/docs.png' : `/og/docs/${slug.join('/')}.png`
   return {
     title,
     description,
