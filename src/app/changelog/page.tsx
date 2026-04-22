@@ -6,6 +6,18 @@ import { getPages } from '@/lib/source'
 export const metadata: Metadata = {
   title: 'Changelog',
   description: 'Recent changes and releases across HappyHQ.',
+  openGraph: {
+    title: 'Changelog',
+    description: 'Recent changes and releases across HappyHQ.',
+    type: 'website',
+    images: [{ url: '/og/changelog', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Changelog',
+    description: 'Recent changes and releases across HappyHQ.',
+    images: ['/og/changelog'],
+  },
 }
 
 function formatDate(iso: string): string {
