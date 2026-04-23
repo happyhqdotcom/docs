@@ -47,7 +47,7 @@ export async function generateMetadata({
       title,
       description,
       url: page.url,
-      type: 'article',
+      type: 'website',
       images: [{ url: ogPath, width: 1200, height: 630 }],
     },
     twitter: {
