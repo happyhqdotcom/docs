@@ -67,6 +67,36 @@ export default function RootLayout({
       className={clsx('h-full overscroll-none antialiased', nunito.variable)}
       suppressHydrationWarning
     >
+      <head>
+        {/*
+          Polyfill esbuild's `__name` helper in the inline-script scope.
+
+          next-themes injects a blocking <script> in <head> that runs a theme-
+          init IIFE before first paint. The function body comes from ToString()
+          on a function defined in the server bundle — which OpenNext builds
+          with esbuild `keepNames: true`. esbuild emits `__name(fn, "fn")` after
+          each named function declaration to preserve `Function.prototype.name`.
+          The helper `__name` is defined once at the top of the worker bundle,
+          but the stringified inline script runs in its own scope where
+          `__name` is undefined, so the IIFE throws ReferenceError at first
+          paint and the theme class never gets applied (brief FOUC + a console
+          error flagged by PageSpeed Insights "Best Practices").
+
+          This one-liner defines `__name` globally before the theme script
+          runs. Remove when either:
+          - @opennextjs/cloudflare stops passing `keepNames: true` to its
+            esbuild config for server chunks whose functions get .toString()'d
+            (track upstream: opennextjs/opennextjs-cloudflare), or
+          - next-themes ships an inline script that doesn't rely on bundler-
+            processed identifiers (track upstream: pacocoursey/next-themes).
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.__name=(t,n)=>Object.defineProperty(t,'name',{value:n,configurable:true})",
+          }}
+        />
+      </head>
       <body className="flex min-h-full bg-[oklch(0.93_0.01_80)] text-[17px] font-medium dark:bg-[#0F0A14]">
         <Providers>
           <Layout navigations={navigations} surfaces={surfaces}>
