@@ -16,10 +16,12 @@
       "routes": [
         { "pattern": "preview.happyhq.com/docs", "zone_name": "happyhq.com" },
         { "pattern": "preview.happyhq.com/docs/*", "zone_name": "happyhq.com" },
+        { "pattern": "preview.happyhq.com/docs.md", "zone_name": "happyhq.com" },
         { "pattern": "preview.happyhq.com/guides", "zone_name": "happyhq.com" },
         { "pattern": "preview.happyhq.com/guides/*", "zone_name": "happyhq.com" },
         { "pattern": "preview.happyhq.com/changelog", "zone_name": "happyhq.com" },
         { "pattern": "preview.happyhq.com/changelog/*", "zone_name": "happyhq.com" },
+        { "pattern": "preview.happyhq.com/changelog.md", "zone_name": "happyhq.com" },
         { "pattern": "preview.happyhq.com/api", "zone_name": "happyhq.com" },
         { "pattern": "preview.happyhq.com/api/*", "zone_name": "happyhq.com" },
         { "pattern": "preview.happyhq.com/_next/*", "zone_name": "happyhq.com" },
