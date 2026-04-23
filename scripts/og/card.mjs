@@ -85,7 +85,6 @@ function card({ title, description, eyebrow, date }) {
           style: {
             display: 'flex',
             alignItems: 'center',
-            gap: 14,
             fontSize: 22,
             fontWeight: 700,
             letterSpacing: '0.1em',
@@ -93,8 +92,7 @@ function card({ title, description, eyebrow, date }) {
             textTransform: 'uppercase',
           },
         },
-        eyebrow,
-        date && h('span', { style: { color: '#A04EA3', fontWeight: 700 } }, ` · ${date}`),
+        date ? `${eyebrow} · ${date}` : eyebrow,
       ),
       h(
         'div',
