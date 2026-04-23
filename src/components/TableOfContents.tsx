@@ -333,7 +333,7 @@ function TocLink({
         nested && 'text-[0.8125rem]',
         active
           ? 'text-[#EF436D] dark:text-[#F95F7C]'
-          : 'text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300',
+          : 'text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-300',
       )}
     >
       {title}

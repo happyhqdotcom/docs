@@ -456,7 +456,7 @@ export function Search({ navigation }: { navigation: NavTree }) {
         {...buttonProps}
       >
         <SearchIcon className="h-4 w-4 flex-none fill-zinc-600/40 group-hover:fill-zinc-500 md:h-5 md:w-5 md:hover:fill-zinc-500 dark:fill-zinc-400 dark:group-hover:fill-zinc-300 dark:md:hover:fill-zinc-300" />
-        <span className="sr-only md:not-sr-only md:ml-2 md:text-zinc-500 md:dark:text-zinc-400">
+        <span className="sr-only md:not-sr-only md:ml-2 md:text-zinc-600 md:dark:text-zinc-400">
           Search docs
         </span>
         {modifierKey && (
