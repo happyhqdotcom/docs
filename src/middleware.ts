@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY
 const POSTHOG_API = 'https://us.i.posthog.com'
 const POSTHOG_ASSETS = 'https://us-assets.i.posthog.com'
 
@@ -11,12 +10,6 @@ function proxyTarget(pathname: string): string | null {
   }
   if (pathname.startsWith('/ingest/')) {
     return POSTHOG_API + pathname.slice('/ingest'.length)
-  }
-  if (POSTHOG_KEY && pathname === `/${POSTHOG_KEY}/config.js`) {
-    return POSTHOG_ASSETS + pathname
-  }
-  if (POSTHOG_KEY && pathname === `/${POSTHOG_KEY}/config`) {
-    return POSTHOG_API + pathname
   }
   return null
 }

@@ -28,8 +28,7 @@
         { "pattern": "preview.happyhq.com/og/docs", "zone_name": "happyhq.com" },
         { "pattern": "preview.happyhq.com/og/docs/*", "zone_name": "happyhq.com" },
         { "pattern": "preview.happyhq.com/og/changelog/*", "zone_name": "happyhq.com" },
-        { "pattern": "preview.happyhq.com/ingest/*", "zone_name": "happyhq.com" },
-        { "pattern": "preview.happyhq.com/phc_u5plRhCDmKVWMHA2TusNXDLpKExGLRwHtxLawGFn1cF/*", "zone_name": "happyhq.com" }
+        { "pattern": "preview.happyhq.com/ingest/*", "zone_name": "happyhq.com" }
       ]
     },
     "production": {
