@@ -11,6 +11,8 @@ const nextConfig = {
   // to this origin so assets resolve through the composed domain too.
   async rewrites() {
     return [
+      // /<surface>.md → /raw/<surface> (surface-root index, e.g. /docs.md)
+      { source: '/:surface.md', destination: '/raw/:surface' },
       // /<surface>/<path>.md → /raw/<surface>/<path>
       { source: '/:path*.md', destination: '/raw/:path*' },
     ]
