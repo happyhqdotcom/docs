@@ -5,7 +5,9 @@
 
 import { type Surface } from '@/lib/frontmatter-schemas'
 
-const SITE_URL = 'https://happyhq.com'
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
+  'https://happyhq.com'
 
 type CommonProps = {
   surface: Surface
