@@ -47,14 +47,16 @@ export async function generateMetadata({
       title,
       description,
       url: page.url,
-      type: 'article',
+      type: 'website',
+      siteName: 'HappyHQ',
+      locale: 'en_US',
       images: [{ url: ogPath, width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [ogPath],
+      images: [{ url: ogPath, alt: description }],
     },
   }
 }

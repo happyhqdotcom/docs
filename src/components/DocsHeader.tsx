@@ -28,7 +28,7 @@ export function DocsHeader({
     <header className="mb-7 space-y-1">
       <div className="mb-3 min-w-0 space-y-1.5">
         {section && (
-          <p className="font-mono text-xs font-medium tracking-wider text-[#EF436D] uppercase dark:text-[#F95F7C]">
+          <p className="font-mono text-xs font-medium tracking-wider text-[#C5254F] uppercase dark:text-[#F95F7C]">
             {section.title}
           </p>
         )}
@@ -42,7 +42,7 @@ export function DocsHeader({
       <div className="flex items-center gap-x-3 pt-2">
         <MarkdownMenu />
         {lastUpdated && (
-          <p className="text-sm text-zinc-400 dark:text-zinc-600">
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Last updated: {lastUpdated}
           </p>
         )}
