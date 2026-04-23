@@ -18,6 +18,7 @@ export const PostHogProvider = ({
     if (!key) return
     posthog.init(key, {
       api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+      ui_host: 'https://us.posthog.com',
       capture_pageview: false, // Disable automatic pageview capture, as we capture manually
       person_profiles: 'identified_only', // this means we do not create profiles for anonymous users
     }) as PostHog
