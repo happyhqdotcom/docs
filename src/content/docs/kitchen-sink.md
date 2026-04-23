@@ -434,7 +434,7 @@ This is an informational banner. Use it for announcements, reminders, or neutral
 {% /banner %}
 
 {% banner variant="warning" title="Deprecation notice" %}
-The `v1` memory API will be removed on 2026-09-01. Migrate to `v2` — [see the migration guide](/docs/fundamentals/memories).
+The `v1` memory API will be removed on 2026-09-01. Migrate to `v2` — [see the migration guide](#).
 {% /banner %}
 
 {% banner variant="success" title="Shipped" %}
