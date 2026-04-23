@@ -37,7 +37,7 @@ function readAuthState(): AuthState {
   }
 }
 
-export function ActionButton() {
+export function ActionButton({ className }: { className?: string } = {}) {
   const [state, setState] = useState<AuthState | null>(null)
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export function ActionButton() {
 
   if (state.hasClerkSession) {
     return (
-      <Button color="pink" href="https://app.happyhq.com">
+      <Button color="pink" href="https://app.happyhq.com" className={className}>
         <Smile className="h-4 w-4" />
         Open App
       </Button>
@@ -60,7 +60,7 @@ export function ActionButton() {
 
   if (state.knownUser) {
     return (
-      <Button color="amber" href="https://app.happyhq.com">
+      <Button color="amber" href="https://app.happyhq.com" className={className}>
         <Smile className="h-4 w-4" />
         Login
       </Button>
@@ -71,6 +71,7 @@ export function ActionButton() {
     <Button
       color={state.isOnWaitlist ? 'green' : 'violet'}
       href="https://app.happyhq.com/waitlist"
+      className={className}
     >
       {state.isOnWaitlist ? (
         <>

@@ -69,23 +69,23 @@ export function ThemeSelector(
     <Listbox as="div" value={theme} onChange={setTheme} {...props}>
       <Label className="sr-only">Theme</Label>
       <ListboxButton
-        className="flex h-6 w-6 cursor-pointer items-center justify-center rounded-lg"
+        className="group -m-2 flex cursor-pointer items-center justify-center rounded-md p-2 hover:bg-zinc-400/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400/40 dark:hover:bg-zinc-400/10 dark:focus-visible:ring-zinc-500/40"
         aria-label="Theme"
       >
         <LightIcon
           className={clsx(
             'h-4 w-4 dark:hidden',
             theme === 'system'
-              ? 'fill-zinc-400'
-              : 'fill-[#11956D] hover:fill-[#017A74]',
+              ? 'fill-zinc-400 group-hover:fill-zinc-500'
+              : 'fill-[#11956D] group-hover:fill-[#017A74]',
           )}
         />
         <DarkIcon
           className={clsx(
             'hidden h-4 w-4 dark:block',
             theme === 'system'
-              ? 'fill-zinc-400'
-              : 'fill-transparent stroke-[#79B66A] hover:stroke-[#29A876]',
+              ? 'fill-zinc-400 group-hover:fill-zinc-300'
+              : 'fill-transparent stroke-[#79B66A] group-hover:stroke-[#29A876]',
           )}
         />
       </ListboxButton>

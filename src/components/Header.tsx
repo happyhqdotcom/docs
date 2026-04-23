@@ -58,7 +58,9 @@ export function Header({
               <Search navigation={navigation} />
             </div>
             <ThemeSelector className="relative z-10" />
-            <ActionButton />
+            <div className="hidden md:flex">
+              <ActionButton />
+            </div>
             <MobileNavigation
               insideDialog={insideDialog}
               navigation={navigation}

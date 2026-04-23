@@ -452,10 +452,10 @@ export function Search({ navigation }: { navigation: NavTree }) {
     <>
       <button
         type="button"
-        className="group flex h-6 w-6 cursor-pointer items-center justify-center focus:outline-none sm:justify-start md:h-10 md:w-80 md:flex-none md:rounded-lg md:bg-[#002000]/5 md:py-1 md:pr-1.5 md:pl-2 md:text-sm md:ring-1 md:ring-zinc-600/20 md:ring-inset md:hover:bg-[#002000]/10 md:hover:ring-zinc-600/40 lg:w-96 dark:md:bg-zinc-800/75 dark:md:ring-white/5 dark:md:ring-inset dark:md:hover:bg-zinc-800/90"
+        className="group flex cursor-pointer items-center justify-center rounded-md focus:outline-none max-md:-m-2 max-md:p-2 max-md:hover:bg-zinc-400/20 max-md:focus-visible:ring-2 max-md:focus-visible:ring-zinc-400/40 dark:max-md:hover:bg-zinc-400/10 dark:max-md:focus-visible:ring-zinc-500/40 sm:justify-start md:h-10 md:w-80 md:flex-none md:rounded-lg md:bg-[#002000]/5 md:py-1 md:pr-1.5 md:pl-2 md:text-sm md:ring-1 md:ring-zinc-600/20 md:ring-inset md:hover:bg-[#002000]/10 md:hover:ring-zinc-600/40 lg:w-96 dark:md:bg-zinc-800/75 dark:md:ring-white/5 dark:md:ring-inset dark:md:hover:bg-zinc-800/90"
         {...buttonProps}
       >
-        <SearchIcon className="h-5 w-5 flex-none fill-zinc-600/40 hover:fill-zinc-500 dark:fill-zinc-400 dark:hover:fill-zinc-300" />
+        <SearchIcon className="h-4 w-4 flex-none fill-zinc-600/40 group-hover:fill-zinc-500 md:h-5 md:w-5 md:hover:fill-zinc-500 dark:fill-zinc-400 dark:group-hover:fill-zinc-300 dark:md:hover:fill-zinc-300" />
         <span className="sr-only md:not-sr-only md:ml-2 md:text-zinc-500 md:dark:text-zinc-400">
           Search docs
         </span>
