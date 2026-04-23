@@ -1,11 +1,11 @@
 'use client'
 
+import { ActionButton } from '@/components/ActionButton'
 import { Header } from '@/components/Header'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars2Icon, XMarkIcon } from '@heroicons/react/20/solid'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { Suspense, useCallback, useEffect, useState } from 'react'
-import { Button } from './Button'
 
 import { Navigation } from '@/components/Navigation'
 import { type NavTree } from '@/lib/source'
@@ -46,7 +46,7 @@ export function MobileNavigation({
       <button
         type="button"
         onClick={insideDialog ? close : () => setIsOpen(true)}
-        className="group relative -m-2 cursor-pointer rounded-md p-2 hover:bg-zinc-400/20 lg:hidden dark:hover:bg-zinc-400/10"
+        className="group relative -m-2 cursor-pointer rounded-md p-2 hover:bg-zinc-400/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400/40 lg:hidden dark:hover:bg-zinc-400/10 dark:focus-visible:ring-zinc-500/40"
         aria-label={insideDialog ? 'Close navigation' : 'Open navigation'}
       >
         {insideDialog ? (
@@ -70,12 +70,9 @@ export function MobileNavigation({
           <Header insideDialog={insideDialog} navigation={navigation} />
 
           <DialogPanel className="min-h-full overflow-y-auto px-4 pt-5 pb-12 sm:px-6">
-            <Button
-              href="/waitlist"
-              className="flex justify-center md:hidden"
-            >
-              Join the waitlist
-            </Button>
+            <div className="md:hidden">
+              <ActionButton className="w-full py-1.5 text-sm/6" />
+            </div>
             <Navigation
               navigation={navigation}
               className="mt-5 px-1"

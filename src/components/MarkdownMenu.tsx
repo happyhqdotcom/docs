@@ -168,11 +168,17 @@ export function MarkdownMenu() {
   let onCopy = async () => {
     if (copyState === 'copying') return
     setCopyState('copying')
+    // Safari drops the user-gesture permission for clipboard writes across
+    // an `await`, so fetch-then-writeText fails with NotAllowedError. Wrap
+    // the fetch in a Promise<Blob> and hand it to `ClipboardItem` instead —
+    // Safari accepts the write immediately and resolves the content later.
     try {
-      let res = await fetch(mdUrl(pathname))
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
-      let text = await res.text()
-      await navigator.clipboard.writeText(text)
+      let type = 'text/plain'
+      let blob = fetch(mdUrl(pathname)).then(async (res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        return new Blob([await res.text()], { type })
+      })
+      await navigator.clipboard.write([new ClipboardItem({ [type]: blob })])
       setCopyState('copied')
       setTimeout(() => setCopyState('idle'), 1800)
     } catch {
