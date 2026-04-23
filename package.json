@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "check:links": "node scripts/check-links.ts",
+    "check:links": "tsx scripts/check-links.ts",
     "preview": "pnpm run build:pre && opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy:preview": "NEXT_PUBLIC_SITE_URL=https://preview.happyhq.com NEXT_PUBLIC_POSTHOG_HOST=https://preview.happyhq.com/ingest NEXT_PUBLIC_POSTHOG_KEY=phc_u5plRhCDmKVWMHA2TusNXDLpKExGLRwHtxLawGFn1cF pnpm run build:pre && opennextjs-cloudflare build && opennextjs-cloudflare deploy --env preview",
     "deploy:production": "NEXT_PUBLIC_SITE_URL=https://happyhq.com NEXT_PUBLIC_POSTHOG_HOST=https://happyhq.com/ingest NEXT_PUBLIC_POSTHOG_KEY=phc_x42DfcaaMUZPTVDmymTrtsURZKXPSKHJitkWaELQqVki pnpm run build:pre && opennextjs-cloudflare build && opennextjs-cloudflare deploy --env production"
@@ -61,6 +61,7 @@
     "prettier-plugin-tailwindcss": "^0.7.1",
     "satori": "^0.26.0",
     "sharp": "0.34.4",
+    "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "wrangler": "^4.84.0"
   },
