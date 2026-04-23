@@ -9,6 +9,10 @@ const nextConfig = {
   // ASSETS binding finds them in `.open-next/assets/_next/*` at those same
   // paths. The compose Worker in front of this origin also routes `/_next/*`
   // to this origin so assets resolve through the composed domain too.
+  // Emit browser source maps in production. Needed so PostHog Error Tracking
+  // can deobfuscate stack traces once maps are uploaded via @posthog/cli.
+  // Maps are served publicly alongside the chunks — fine for this OSS repo.
+  productionBrowserSourceMaps: true,
   async rewrites() {
     return [
       // /<surface>.md → /raw/<surface> (surface-root index, e.g. /docs.md)

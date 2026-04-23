@@ -28,6 +28,7 @@ export const PostHogProvider = ({ children }: PostHogProviderProps) => {
         ui_host: 'https://us.posthog.com',
         capture_pageview: false, // Disable automatic pageview capture, as we capture manually
         person_profiles: 'identified_only', // this means we do not create profiles for anonymous users
+        capture_exceptions: true, // sends unhandled errors + promise rejections to PostHog Error Tracking
       })
       setClient(posthog)
     })
