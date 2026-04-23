@@ -47,6 +47,8 @@ export async function generateMetadata({
       description,
       url: page.url,
       type: 'article',
+      siteName: 'HappyHQ',
+      locale: 'en_US',
       publishedTime: page.frontmatter.date,
       images: [{ url: ogPath, width: 1200, height: 630 }],
     },

@@ -48,6 +48,8 @@ export async function generateMetadata({
       description,
       url: page.url,
       type: 'website',
+      siteName: 'HappyHQ',
+      locale: 'en_US',
       images: [{ url: ogPath, width: 1200, height: 630 }],
     },
     twitter: {
