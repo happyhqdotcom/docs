@@ -52,14 +52,14 @@ export function Header({
 
         {/* Right Rail - Links */}
         <div className="xl:flex xl:flex-none xl:items-center">
-          <div className="flex w-40 items-center justify-end gap-4 px-2 lg:w-64 xl:w-72">
+          <div className="flex w-40 items-center justify-end gap-4 px-2 md:w-auto md:flex-none lg:w-64 xl:w-72">
             {/* Mobile Search (Hidden on lg+) */}
             <div className="lg:hidden">
               <Search navigation={navigation} />
             </div>
             <ThemeSelector className="relative z-10" />
             <div className="hidden md:flex">
-              <ActionButton />
+              <ActionButton className="whitespace-nowrap" />
             </div>
             <MobileNavigation
               insideDialog={insideDialog}

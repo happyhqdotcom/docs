@@ -452,15 +452,15 @@ export function Search({ navigation }: { navigation: NavTree }) {
     <>
       <button
         type="button"
-        className="group flex cursor-pointer items-center justify-center rounded-md focus:outline-none max-md:-m-2 max-md:p-2 max-md:hover:bg-zinc-400/20 max-md:focus-visible:ring-2 max-md:focus-visible:ring-zinc-400/40 dark:max-md:hover:bg-zinc-400/10 dark:max-md:focus-visible:ring-zinc-500/40 sm:justify-start md:h-10 md:w-80 md:flex-none md:rounded-lg md:bg-[#002000]/5 md:py-1 md:pr-1.5 md:pl-2 md:text-sm md:ring-1 md:ring-zinc-600/20 md:ring-inset md:hover:bg-[#002000]/10 md:hover:ring-zinc-600/40 lg:w-96 dark:md:bg-zinc-800/75 dark:md:ring-white/5 dark:md:ring-inset dark:md:hover:bg-zinc-800/90"
+        className="group flex cursor-pointer items-center justify-center rounded-md focus:outline-none max-lg:-m-2 max-lg:p-2 max-lg:hover:bg-zinc-400/20 max-lg:focus-visible:ring-2 max-lg:focus-visible:ring-zinc-400/40 dark:max-lg:hover:bg-zinc-400/10 dark:max-lg:focus-visible:ring-zinc-500/40 sm:justify-start lg:h-10 lg:w-96 lg:flex-none lg:rounded-lg lg:bg-[#002000]/5 lg:py-1 lg:pr-1.5 lg:pl-2 lg:text-sm lg:ring-1 lg:ring-zinc-600/20 lg:ring-inset lg:hover:bg-[#002000]/10 lg:hover:ring-zinc-600/40 dark:lg:bg-zinc-800/75 dark:lg:ring-white/5 dark:lg:ring-inset dark:lg:hover:bg-zinc-800/90"
         {...buttonProps}
       >
-        <SearchIcon className="h-4 w-4 flex-none fill-zinc-600/40 group-hover:fill-zinc-500 md:h-5 md:w-5 md:hover:fill-zinc-500 dark:fill-zinc-400 dark:group-hover:fill-zinc-300 dark:md:hover:fill-zinc-300" />
-        <span className="sr-only md:not-sr-only md:ml-2 md:text-zinc-600 md:dark:text-zinc-400">
+        <SearchIcon className="h-4 w-4 flex-none fill-zinc-600/40 group-hover:fill-zinc-500 lg:h-5 lg:w-5 lg:hover:fill-zinc-500 dark:fill-zinc-400 dark:group-hover:fill-zinc-300 dark:lg:hover:fill-zinc-300" />
+        <span className="sr-only lg:not-sr-only lg:ml-2 lg:text-zinc-600 lg:dark:text-zinc-400">
           Search docs
         </span>
         {modifierKey && (
-          <kbd className="ml-auto hidden rounded-md border border-zinc-600/20 bg-white/10 px-1.5 font-medium text-zinc-600 md:block dark:bg-zinc-800/20 dark:text-zinc-400">
+          <kbd className="ml-auto hidden rounded-md border border-zinc-600/20 bg-white/10 px-1.5 font-medium text-zinc-600 lg:block dark:bg-zinc-800/20 dark:text-zinc-400">
             <kbd className="font-sans text-[10px]">{modifierKey}</kbd>
             <kbd className="font-sans text-[10px]">K</kbd>
           </kbd>
