@@ -5,6 +5,10 @@ import { useEffect, useState } from 'react'
 import { Button } from '@/components/catalyst/button'
 import { Smile, TicketCheck } from 'lucide-react'
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
+  'https://happyhq.com'
+
 type AuthState = {
   isOnWaitlist: boolean
   hasClerkSession: boolean
@@ -70,7 +74,7 @@ export function ActionButton({ className }: { className?: string } = {}) {
   return (
     <Button
       color={state.isOnWaitlist ? 'green' : 'violet'}
-      href="https://app.happyhq.com/waitlist"
+      href={`${SITE_URL}/waitlist`}
       className={className}
     >
       {state.isOnWaitlist ? (
