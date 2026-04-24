@@ -93,7 +93,7 @@ function ChatGPTIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 function ClaudeIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden {...props}>
-      <path d="M4.709 15.955l4.72-2.647.079-.23-.079-.128H9.2l-.79-.048-2.698-.073-2.339-.097-2.266-.122-.571-.121L0 11.784l.055-.352.48-.321.686.06 1.52.103 2.278.158 1.652.097 2.449.255h.389l.055-.157-.134-.098-.103-.097-2.358-1.596-2.552-1.688-1.336-.972-.724-.491-.364-.462-.158-1.008.656-.722.881.06.225.061.893.686 1.908 1.476 2.491 1.833.365.304.145-.103.019-.073-.164-.274-1.355-2.446-1.446-2.49-.644-1.032-.17-.619a2.97 2.97 0 01-.104-.729L6.283.134 6.696 0l.996.134.42.364.62 1.414 1.002 2.229 1.555 3.03.456.898.243.832.091.255h.158V9.01l.128-1.706.237-2.095.23-2.695.08-.76.376-.91.747-.492.584.28.48.685-.067.444-.286 1.851-.559 2.903-.364 1.942h.212l.242-.242.98-1.299 1.644-2.053.725-.815.845-.9.544-.431h1.027l.756.1120675.1125 1.025-.134 1.06-.42.546-.35.453-.595.6799-.379.6795-.3481.437.08.437-.17.248-.15.193-.624.433-.37.2425-.38.223-.3995.223-.2825.169-.3875.2405-.3435.2165-.38.2405-.292.1855-.2755.1685-.3315.1925-.1575.088-.0365.058-.01.012.061.014.092.0375.1075.045.0735.042.052.027.031.039.01v.013l-.1515.0485-.127.027-.058.013-.027.034-.024.033-.051.04-.127.05-.248.115-.4375.1785-.4245.1755-.389.152-.2485.092-.2105.073-.2015.079-.2715.128-.3095.146-.3955.195-.2285.1145-.2115.121-.2185.152-.188.152-.1755.158-.1875.2425-.1695.255-.224.37-.1695.292-.127.31-.223.6875-.10955.401-.05485.2875-.01815.2185-.01385.139-.00685.2335.0155.304.02385.2975.0455.2475.06.246.07.238.0815.231.0895.224.0975.217.1055.2105.1135.204.121.1975.1285.1915.135.185.1415.179.148.172.1545.1655.1605.159.1675.1525.1735.147.1795.141.1855.135.1915.1285.197.122.2025.1155.208.1085.213.1005.2185.0925.2235.084.2285.0755.233.0665.2375.057.2415.0475.245.0375.2485.028.2515.02.2545.0115.2575.0045H22.5l.0165-.0625.0545-.194.105-.3615.1515-.52.193-.6545.2255-.762.247-.836.2555-.875.253-.8775.2385-.8425.211-.772.171-.6635.1185-.5205.0495-.3525-.0055-.2055-.0525-.1125-.129-.0545-.1855-.0035-.2645.041-.347.075-.4035.0985-.447.1155-.475.1255-.4785.1275-.461.124-.4235.1145-.3625.0955-.278.0695-.1705.0365-.0385.009v.066L4.709 15.955z" />
+      <path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z" />
     </svg>
   )
 }
@@ -168,6 +168,9 @@ export function MarkdownMenu() {
   let onCopy = async () => {
     if (copyState === 'copying') return
     setCopyState('copying')
+    // Hold the spinner long enough to register visually even when the fetch
+    // resolves in a few milliseconds.
+    let minDelay = new Promise((r) => setTimeout(r, 300))
     // Safari drops the user-gesture permission for clipboard writes across
     // an `await`, so fetch-then-writeText fails with NotAllowedError. Wrap
     // the fetch in a Promise<Blob> and hand it to `ClipboardItem` instead —
@@ -179,9 +182,11 @@ export function MarkdownMenu() {
         return new Blob([await res.text()], { type })
       })
       await navigator.clipboard.write([new ClipboardItem({ [type]: blob })])
+      await minDelay
       setCopyState('copied')
       setTimeout(() => setCopyState('idle'), 1800)
     } catch {
+      await minDelay
       setCopyState('error')
       setTimeout(() => setCopyState('idle'), 2200)
     }
@@ -198,12 +203,7 @@ export function MarkdownMenu() {
         ? AlertIcon
         : ClipboardIcon
 
-  let label =
-    copyState === 'copied'
-      ? 'Copied'
-      : copyState === 'error'
-        ? 'Copy failed'
-        : 'Copy Markdown'
+  let label = 'Copy Markdown'
 
   let splitShell =
     'inline-flex items-stretch rounded-lg border text-xs font-medium transition-colors ' +
@@ -227,13 +227,20 @@ export function MarkdownMenu() {
         aria-label="Copy page as Markdown"
         className={primaryPart}
       >
-        <StatusIcon
-          className={clsx(
-            'h-3.5 w-3.5 fill-current',
-            copyState === 'copied' && 'text-emerald-600 dark:text-emerald-400',
-            copyState === 'error' && 'text-red-600 dark:text-red-400',
-          )}
-        />
+        {copyState === 'copying' ? (
+          <span
+            aria-hidden
+            className="size-3.5 animate-spin rounded-full border-2 border-current/20 border-t-current/70"
+          />
+        ) : (
+          <StatusIcon
+            className={clsx(
+              'h-3.5 w-3.5 fill-current',
+              copyState === 'copied' && 'text-emerald-600 dark:text-emerald-400',
+              copyState === 'error' && 'text-red-600 dark:text-red-400',
+            )}
+          />
+        )}
         <span>{label}</span>
       </button>
       <Menu as="div" className="relative flex">
@@ -242,8 +249,9 @@ export function MarkdownMenu() {
         </MenuButton>
         <MenuItems
           transition
+          anchor={{ to: 'bottom end', gap: 8, padding: 8 }}
           className={clsx(
-            'absolute top-full right-0 z-10 mt-2 w-60 origin-top-right space-y-1 rounded-xl bg-white p-1 text-sm font-medium shadow-md ring-1 shadow-black/5 ring-black/5',
+            'z-10 w-60 origin-top-right space-y-1 rounded-xl bg-white p-1 text-sm font-medium shadow-md ring-1 shadow-black/5 ring-black/5',
             'dark:bg-zinc-800 dark:ring-white/5',
             'transition duration-100 ease-out data-closed:scale-95 data-closed:opacity-0',
             'focus:outline-none',
@@ -282,29 +290,6 @@ export function MarkdownMenu() {
               </div>
             </div>
           </MenuRowButton>
-          <div className="my-1 border-t border-zinc-200 dark:border-zinc-700/60" />
-          <MenuRowLink href="/llms.txt">
-            <RowIcon>
-              <ExternalIcon className="h-4 w-4 fill-zinc-400" />
-            </RowIcon>
-            <div className="ml-3">
-              <div>llms.txt</div>
-              <div className="text-xs font-normal text-zinc-500 dark:text-zinc-400">
-                Site index for LLMs
-              </div>
-            </div>
-          </MenuRowLink>
-          <MenuRowLink href="/llms-full.txt">
-            <RowIcon>
-              <ExternalIcon className="h-4 w-4 fill-zinc-400" />
-            </RowIcon>
-            <div className="ml-3">
-              <div>llms-full.txt</div>
-              <div className="text-xs font-normal text-zinc-500 dark:text-zinc-400">
-                Full docs as a single file
-              </div>
-            </div>
-          </MenuRowLink>
         </MenuItems>
       </Menu>
     </div>

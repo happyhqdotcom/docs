@@ -15,7 +15,7 @@ export function Prose<T extends React.ElementType = 'div'>({
         className,
         'prose prose-zinc dark:prose-invert max-w-none dark:text-zinc-400',
         // headings
-        'prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-bold prose-h1:font-heading prose-h1:font-extrabold lg:prose-headings:scroll-mt-34',
+        'prose-headings:scroll-mt-36 prose-headings:font-display prose-headings:font-bold prose-h1:font-heading prose-h1:font-extrabold lg:prose-headings:scroll-mt-34',
         // lead
         'prose-lead:text-zinc-500 dark:prose-lead:text-zinc-400',
         // links

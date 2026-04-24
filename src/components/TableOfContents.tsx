@@ -135,23 +135,26 @@ export function MobileTableOfContents({
 
         <MenuItems
           modal={false}
-          className="absolute top-[48px] left-0 mt-2 w-full origin-top-left divide-y divide-zinc-400/20 border-b border-zinc-300 bg-[oklch(0.93_0.01_80)] shadow-lg transition duration-200 ease-out data-closed:scale-95 data-closed:opacity-0 dark:border-zinc-600 dark:bg-zinc-800 dark:shadow-none"
+          className="absolute top-[48px] left-0 mt-2 w-full origin-top-left divide-y divide-zinc-400/20 border-b border-zinc-300 bg-[oklch(0.93_0.01_80)] shadow-lg data-enter:transition data-enter:duration-200 data-enter:ease-out data-enter:data-closed:scale-95 data-enter:data-closed:opacity-0 dark:border-zinc-600 dark:bg-zinc-800 dark:shadow-none"
         >
           {headings.map((h) => (
-            <MenuItem key={h.id} as="div">
-              <Link
-                href={`#${h.id}`}
-                className={clsx(
-                  'block py-2 text-sm transition',
-                  h.level === 3 ? 'pr-4 pl-8' : 'px-4',
-                  active.has(h.id)
-                    ? 'text-[#EF436D] dark:text-[#F95F7C]'
-                    : 'text-zinc-800 dark:text-zinc-400',
-                  'hover:bg-black/5 data-focus:bg-zinc-100 dark:hover:bg-black/10 dark:data-focus:bg-zinc-700',
-                )}
-              >
-                {h.title}
-              </Link>
+            <MenuItem key={h.id}>
+              {({ close }) => (
+                <Link
+                  href={`#${h.id}`}
+                  onClick={() => close()}
+                  className={clsx(
+                    'block py-2 text-sm transition',
+                    h.level === 3 ? 'pr-4 pl-8' : 'px-4',
+                    active.has(h.id)
+                      ? 'text-[#EF436D] dark:text-[#F95F7C]'
+                      : 'text-zinc-800 dark:text-zinc-400',
+                    'hover:bg-black/5 data-focus:bg-zinc-100 dark:hover:bg-black/10 dark:data-focus:bg-zinc-700',
+                  )}
+                >
+                  {h.title}
+                </Link>
+              )}
             </MenuItem>
           ))}
         </MenuItems>
@@ -227,7 +230,7 @@ export function DesktopTableOfContents({
   if (tableOfContents.length === 0) return null
 
   return (
-    <div className="hidden lg:relative lg:-mr-6 lg:block lg:h-full lg:flex-none">
+    <div className="hidden lg:relative lg:-mr-6 lg:block lg:flex-none">
       <div className="absolute top-0 bottom-0 w-full border-l border-zinc-400/20 dark:border-zinc-800" />
       <div className="lg:sticky lg:top-19 lg:h-[calc(100vh-4.75rem)] lg:overflow-y-auto lg:px-4 lg:py-6">
         <nav aria-labelledby="on-this-page-title" className="w-64 pl-4">
