@@ -249,8 +249,9 @@ export function MarkdownMenu() {
         </MenuButton>
         <MenuItems
           transition
+          anchor={{ to: 'bottom end', gap: 8, padding: 8 }}
           className={clsx(
-            'absolute top-full right-0 z-10 mt-2 w-60 origin-top-right space-y-1 rounded-xl bg-white p-1 text-sm font-medium shadow-md ring-1 shadow-black/5 ring-black/5',
+            'z-10 w-60 origin-top-right space-y-1 rounded-xl bg-white p-1 text-sm font-medium shadow-md ring-1 shadow-black/5 ring-black/5',
             'dark:bg-zinc-800 dark:ring-white/5',
             'transition duration-100 ease-out data-closed:scale-95 data-closed:opacity-0',
             'focus:outline-none',
