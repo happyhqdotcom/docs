@@ -168,6 +168,9 @@ export function MarkdownMenu() {
   let onCopy = async () => {
     if (copyState === 'copying') return
     setCopyState('copying')
+    // Hold the spinner long enough to register visually even when the fetch
+    // resolves in a few milliseconds.
+    let minDelay = new Promise((r) => setTimeout(r, 300))
     // Safari drops the user-gesture permission for clipboard writes across
     // an `await`, so fetch-then-writeText fails with NotAllowedError. Wrap
     // the fetch in a Promise<Blob> and hand it to `ClipboardItem` instead —
@@ -179,9 +182,11 @@ export function MarkdownMenu() {
         return new Blob([await res.text()], { type })
       })
       await navigator.clipboard.write([new ClipboardItem({ [type]: blob })])
+      await minDelay
       setCopyState('copied')
       setTimeout(() => setCopyState('idle'), 1800)
     } catch {
+      await minDelay
       setCopyState('error')
       setTimeout(() => setCopyState('idle'), 2200)
     }
@@ -198,12 +203,7 @@ export function MarkdownMenu() {
         ? AlertIcon
         : ClipboardIcon
 
-  let label =
-    copyState === 'copied'
-      ? 'Copied'
-      : copyState === 'error'
-        ? 'Copy failed'
-        : 'Copy Markdown'
+  let label = 'Copy Markdown'
 
   let splitShell =
     'inline-flex items-stretch rounded-lg border text-xs font-medium transition-colors ' +
@@ -227,13 +227,20 @@ export function MarkdownMenu() {
         aria-label="Copy page as Markdown"
         className={primaryPart}
       >
-        <StatusIcon
-          className={clsx(
-            'h-3.5 w-3.5 fill-current',
-            copyState === 'copied' && 'text-emerald-600 dark:text-emerald-400',
-            copyState === 'error' && 'text-red-600 dark:text-red-400',
-          )}
-        />
+        {copyState === 'copying' ? (
+          <span
+            aria-hidden
+            className="size-3.5 animate-spin rounded-full border-2 border-current/20 border-t-current/70"
+          />
+        ) : (
+          <StatusIcon
+            className={clsx(
+              'h-3.5 w-3.5 fill-current',
+              copyState === 'copied' && 'text-emerald-600 dark:text-emerald-400',
+              copyState === 'error' && 'text-red-600 dark:text-red-400',
+            )}
+          />
+        )}
         <span>{label}</span>
       </button>
       <Menu as="div" className="relative flex">
