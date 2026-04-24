@@ -227,7 +227,7 @@ export function DesktopTableOfContents({
   if (tableOfContents.length === 0) return null
 
   return (
-    <div className="hidden lg:relative lg:-mr-6 lg:block lg:h-full lg:flex-none">
+    <div className="hidden lg:relative lg:-mr-6 lg:block lg:flex-none">
       <div className="absolute top-0 bottom-0 w-full border-l border-zinc-400/20 dark:border-zinc-800" />
       <div className="lg:sticky lg:top-19 lg:h-[calc(100vh-4.75rem)] lg:overflow-y-auto lg:px-4 lg:py-6">
         <nav aria-labelledby="on-this-page-title" className="w-64 pl-4">
