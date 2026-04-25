@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Frequently asked questions
 description: Short answers to the questions people ask most — about pricing, data, self-hosting, AI providers, and what HappyHQ is (and isn't).
 nextjs:

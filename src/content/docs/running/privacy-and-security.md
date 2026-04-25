@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Privacy and security
 description: What stays local, what goes to your AI provider, and what we never see. A straight answer for people who care where their data goes.
 nextjs:

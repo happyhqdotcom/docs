@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Chat
 description: Chat is where you talk to Q — to teach it, answer its questions, give feedback, or nudge a task in progress.
 nextjs:

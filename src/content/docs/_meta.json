@@ -2,16 +2,6 @@
   "pages": [
     "---Start here---",
     "index",
-    "...start-here",
-    "---Core concepts---",
-    "...concepts",
-    "---Using HappyHQ---",
-    "...using",
-    "---Running HappyHQ---",
-    "...running",
-    "---Contributing---",
-    "...contributing",
-    "---Resources---",
-    "...resources"
+    "...start-here"
   ]
 }

@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: When your work has "it depends"
 description: Real work is full of exceptions — "for this client we do X", "except on Fridays". HappyHQ is built for that. Here's how to teach Q the exceptions.
 nextjs:

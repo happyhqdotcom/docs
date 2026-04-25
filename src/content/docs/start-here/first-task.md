@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Run your first task with Q
 description: Walk through your first task end-to-end — type what you want, review Q's plan, approve it, and watch Q do the work.
 ---

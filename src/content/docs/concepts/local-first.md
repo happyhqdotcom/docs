@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: What "local-first" means for your data
 description: Local-first means your work lives on your machine, in open formats, readable without HappyHQ. No cloud lock-in, no hidden memory, no renting your own files back.
 nextjs:

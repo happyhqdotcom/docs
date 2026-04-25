@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Specs
 description: A Spec is the underlying configuration Q uses to execute a Playbook. Most users never need to touch Specs. For developers, they are the extension point.
 nextjs:

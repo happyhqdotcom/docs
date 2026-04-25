@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: System requirements
 description: What you need to run HappyHQ — supported operating systems, disk space, network expectations, and recommended AI provider accounts.
 nextjs:

@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: What's next
 description: Pointers to the next things to learn — concepts, deeper features, self-hosting, and where the community hangs out.
 nextjs:

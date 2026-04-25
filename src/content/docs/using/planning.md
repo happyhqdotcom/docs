@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Reviewing Q's plan before it runs
 description: Q proposes a plan before doing anything. Here's how to read it, edit it, or push back — so the work goes the way you want from the start.
 nextjs:

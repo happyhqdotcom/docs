@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Where HappyHQ stores your files
 description: Everything HappyHQ creates lives in ~/HappyHQ as plain files. Here's what's in there, how it's organized, and how to work with those files outside the app.
 nextjs:

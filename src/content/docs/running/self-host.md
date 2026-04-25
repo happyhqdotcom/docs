@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Self-hosting HappyHQ
 description: HappyHQ is MIT-licensed and built to be self-hosted. Deploy it on your own machine or with Docker on Fly.io, and own the whole stack.
 nextjs:

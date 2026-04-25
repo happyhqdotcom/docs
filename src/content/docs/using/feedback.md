@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Giving Q feedback that sticks
 description: When Q gets something wrong, how you correct it matters. Some corrections are one-off, others should teach Q for next time. Here's when to use which.
 nextjs:

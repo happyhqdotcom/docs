@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 
 import { getPages } from '@/lib/source'
 
@@ -34,6 +35,10 @@ export default function ChangelogIndex() {
   const entries = getPages('changelog').sort((a, b) =>
     b.frontmatter.date.localeCompare(a.frontmatter.date),
   )
+
+  if (entries.length === 0) {
+    notFound()
+  }
 
   return (
     <div className="mx-auto max-w-3xl min-w-0 flex-auto px-5 py-11 max-[405px]:max-w-screen max-[405px]:px-4 lg:pl-8 xl:px-16">
