@@ -1,6 +1,6 @@
 # HappyHQ Docs
 
-The source for **[docs.happyhq.com](https://docs.happyhq.com)** — the documentation site for [HappyHQ](https://happyhq.com), the AI workspace for everyday work.
+The source for **[happyhq.com/docs](https://happyhq.com/docs)** — the documentation site for [HappyHQ](https://happyhq.com), the AI workspace for everyday work.
 
 Built with Next.js, Markdoc, and Tailwind CSS.
 
