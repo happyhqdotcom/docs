@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Developer setup
 description: Clone, install, run the app locally, and get to a working dev loop for contributing to HappyHQ.
 nextjs:

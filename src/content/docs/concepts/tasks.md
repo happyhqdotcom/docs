@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Tasks
 description: A Task is one unit of work you hand to Q. It has inputs, a plan Q writes, and outputs Q produces. You can approve, steer, or rerun it.
 nextjs:

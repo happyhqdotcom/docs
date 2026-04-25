@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: How the codebase is organized
 description: A map of the HappyHQ repo — the major packages, where the agent loop lives, where the UI lives, and how they talk to each other.
 nextjs:

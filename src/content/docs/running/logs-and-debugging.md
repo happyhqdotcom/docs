@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Logs and debugging
 description: When something goes wrong, HappyHQ writes JSONL logs under ~/HappyHQ/.logs/. Here's how to find the right file and what to look for.
 nextjs:

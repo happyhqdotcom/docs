@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Changelog
 description: Release notes for HappyHQ live on the dedicated changelog surface. This page points there and surfaces the most recent entries.
 nextjs:

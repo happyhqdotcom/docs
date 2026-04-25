@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Teach Q something you do every week
 description: Show Q how you handle a repeating piece of work — upload examples, answer Q's questions, refine the output until it matches how you'd do it.
 nextjs:

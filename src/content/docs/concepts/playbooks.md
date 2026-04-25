@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Playbooks
 description: A Playbook is a plain-language set of instructions that tells Q how you want a kind of work handled. Write it once, Q follows it every time.
 nextjs:

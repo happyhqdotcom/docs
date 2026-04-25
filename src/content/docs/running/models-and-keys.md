@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Choosing a model and adding your API key
 description: HappyHQ uses your own AI provider key. Here's how to pick a model, add your key, and swap providers without losing your work.
 nextjs:

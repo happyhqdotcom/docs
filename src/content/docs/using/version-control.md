@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: How Q tracks versions of your work
 description: Every output Q produces is versioned with git under the hood. You can diff, roll back, and keep every iteration without thinking about it.
 nextjs:

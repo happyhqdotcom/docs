@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Multi-surface content architecture
 date: 2026-04-19
 description: Docs are no longer the only surface. Changelog entries, guides, and API references will each get their own top-level section.

@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Teaching Q
 description: The full teaching workflow — upload examples, answer Q's clarifying questions, refine, and save what worked.
 nextjs:

@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Contributing to HappyHQ
 description: HappyHQ is MIT-licensed and community-built. Here's how to report issues, propose changes, and submit pull requests.
 nextjs:

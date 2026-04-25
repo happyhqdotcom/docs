@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Watching Q work and steering it
 description: Once Q starts working, you can watch progress in real time, pause it, nudge it, or let it finish and review at the end.
 nextjs:

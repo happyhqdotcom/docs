@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: What is Q?
 description: Q is the AI agent at the heart of HappyHQ. Unlike a chatbot, Q learns how you work and then does your work — planning, executing, and taking feedback.
 nextjs:

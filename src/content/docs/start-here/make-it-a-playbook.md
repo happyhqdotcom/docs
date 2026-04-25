@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Turn what you taught into a Playbook
 description: Save what Q learned as a reusable Playbook so you can hand the same kind of work off again — without re-teaching every time.
 nextjs:

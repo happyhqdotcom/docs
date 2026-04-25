@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Troubleshooting
 description: When something isn't working — Q won't run, tasks won't save, files look wrong — start here. Common symptoms mapped to the fix.
 nextjs:

@@ -1,4 +1,5 @@
 ---
+hidden: true
 title: Uploads and files
 description: You teach Q by giving it real files — documents, emails, examples. Those files stay on your machine, in plain formats, that you can read without HappyHQ.
 nextjs:
