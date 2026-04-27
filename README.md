@@ -11,7 +11,7 @@ Built with Next.js, Markdoc, and Tailwind CSS.
 3. If it changes, the docs change.
 4. If a feature can't be explained clearly, it's probably not ready.
 
-Docs aren't a side thing at HappyHQ. They're the thing.
+Docs aren't a side thing at HappyHQ. They're part of the product.
 
 ## Run it locally
 
