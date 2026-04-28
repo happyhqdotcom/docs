@@ -42,6 +42,7 @@ export async function middleware(request: NextRequest) {
   const host = request.headers.get('host')
 
   const response = NextResponse.next()
+  response.headers.set('X-Frame-Options', 'DENY')
 
   if (host !== 'happyhq.com') {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow')
