@@ -41,14 +41,6 @@ export async function middleware(request: NextRequest) {
 
   const host = request.headers.get('host')
 
-  // Temporary: redirect the old shared docs.happyhq.workers.dev URL to
-  // docs-preview until cutover. Remove after the Launch checklist completes.
-  if (host === 'docs.happyhq.workers.dev') {
-    const redirectTarget = new URL(request.url)
-    redirectTarget.host = 'docs-preview.happyhq.workers.dev'
-    return NextResponse.redirect(redirectTarget, 302)
-  }
-
   const response = NextResponse.next()
 
   if (host !== 'happyhq.com') {
