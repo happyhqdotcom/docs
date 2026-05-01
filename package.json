@@ -31,7 +31,7 @@
     "@sindresorhus/slugify": "^3.0.0",
     "@tailwindcss/postcss": "^4.1.15",
     "@tailwindcss/typography": "^0.5.19",
-    "@types/node": "^24.9.1",
+    "@types/node": "^25.6.0",
     "clsx": "^2.1.0",
     "fast-glob": "^3.2.12",
     "flexsearch": "^0.8.212",
