@@ -21,12 +21,10 @@ type CommonProps = {
 
 function articleSchema(props: CommonProps, type: 'TechArticle' | 'BlogPosting') {
   const canonical = `${SITE_URL}${props.url}`
-  // OG image URL mirrors the route-handler at `/og/<surface>/<slug>`. Keep
-  // in sync with src/app/og/<surface>/[[...slug]]/route.tsx.
   const ogPath =
     props.url === `/${props.surface}`
-      ? `/og/${props.surface}`
-      : `/og/${props.surface}${props.url.replace(new RegExp(`^/${props.surface}`), '')}`
+      ? `/og/${props.surface}/_root.png`
+      : `/og/${props.surface}${props.url.replace(new RegExp(`^/${props.surface}`), '')}.png`
   return {
     '@context': 'https://schema.org',
     '@type': type,
