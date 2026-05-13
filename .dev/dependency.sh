@@ -76,14 +76,21 @@ if [ -n "$OVERRIDE" ] && [ -z "$SINGLE_PR" ]; then
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-cd "$SCRIPT_DIR" || exit 1
 
 # ── Base branch resolution ──
 # Single-checkout setup (no isolated worktree). The hard-reset a few lines
 # down operates on the maintainer's primary docs checkout — the
 # uncommitted-changes guard below is the only thing standing between a stray
 # edit and `git reset --hard origin/main`. Don't relax it.
-REPO_ROOT="$(git rev-parse --show-toplevel)"
+REPO_ROOT="$(cd "$SCRIPT_DIR" && git rev-parse --show-toplevel)"
+
+# Operate from REPO_ROOT, not SCRIPT_DIR (.dev/). Reason: when the agent
+# does `gh pr checkout <stale-PR>` on a branch forked before `.dev/` was
+# merged to main, `.dev/` gets unlinked from disk. If the wrapper's cwd
+# is `.dev/`, the shell's $PWD becomes a dead inode and every subsequent
+# command — including the queue's `gh pr list` — fails with "Unable to
+# read current working directory." REPO_ROOT survives any branch switch.
+cd "$REPO_ROOT" || exit 1
 case "$REPO_ROOT" in
     */docs)
         BASE_BRANCH="main"
@@ -134,7 +141,9 @@ else
 fi
 
 run_session() {
-    local prompt_file="$1"
+    # Prompt file is named relative to SCRIPT_DIR; resolve to absolute so
+    # this works regardless of the wrapper's cwd (REPO_ROOT).
+    local prompt_file="$SCRIPT_DIR/$1"
     local label="$2"
 
     echo -e "\n  ${DIM}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
