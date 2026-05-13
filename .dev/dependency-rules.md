@@ -1,6 +1,12 @@
 # Dependency Rules
 
-Source of truth for how the deps loop processes open Dependabot PRs and Dependabot security alerts. Both `PROMPT_dependency_triage.md` and `PROMPT_dependency_upgrade.md` load this file. Edit here, not in the prompts.
+Source of truth for how the deps loop processes open Dependabot PRs and Dependabot security alerts. `PROMPT_dependency_triage.md`, `PROMPT_dependency_upgrade.md`, and `PROMPT_dependency_batch.md` all load this file. Edit here, not in the prompts.
+
+The loop is three phases:
+
+- **Phase 1 — Triage.** Sweep alerts (A1–A4), gate Dependabot PRs on protected paths (Rule 1).
+- **Phase 2 — Upgrade.** Per-PR verify + investigate. Outcome is a `ralphie:*` label or a replacement PR.
+- **Phase 3 — Batch.** Combine ≥2 `ralphie:ready-to-merge` PRs that share files into a single batch PR. Verify the combined diff once. Avoids the rebase cascade that happens when N overlapping PRs land serially.
 
 ## PR queue
 
@@ -47,6 +53,102 @@ A PR that passes Rule 1 is **eligible** — it stays unlabeled and Phase 2 picks
 - **Path B — fixups.** When verification fails, generate the smallest changelog-cited fixups (or, for `pnpm install`-time errors like `ERR_PNPM_LOCKFILE_CONFIG_MISMATCH`, regenerate the lockfile via no-frozen install) on a fresh `chore/upgrade-<pkg>-vN` branch off `main` and open a replacement PR for human review.
 
 Ralphie never merges. The merge button is the maintainer's. Always.
+
+## Phase 3 — Batch
+
+Phase 3 runs after Phase 2 drains. Its job: when ≥2 PRs are `ralphie:ready-to-merge` and touch overlapping files (typically `package.json` + `pnpm-lock.yaml`), combine them into one PR. This prevents the rebase cascade where merging the first PR makes all the others stale.
+
+### Eligibility gates
+
+Phase 3 only proceeds when **all** of the following hold:
+
+- **At least 2 PRs** carry `ralphie:ready-to-merge` (excluding any on a `chore/batch-*` head ref — those are batches themselves and would create infinite recursion).
+- **At least one pair shares a touched file path.** If the ready set is e.g. one npm bump and one github-actions bump, their file sets are disjoint and they can merge in any order without conflicting — batching adds no value, so skip.
+
+If either gate fails, Phase 3 exits silently with a one-line reason. No error.
+
+### What gets batched
+
+For each PR in the batchable set, Phase 3 replays *only* the PR's `package.json` edits onto a fresh `chore/batch-deps-YYYYMMDD-<sha>` branch off `origin/main`. The lockfile is regenerated from the combined `package.json`, never copied. Recognized edit shapes:
+
+- **`pnpm.overrides.<pkg>` add or version bump** — copy the value.
+- **`dependencies.<pkg>` or `devDependencies.<pkg>` version bump** — copy the version.
+- **Same-package version conflict** (two PRs bump the same package to different versions) — take the higher version. Note in the batch PR body.
+- **Non-mechanical edits** (scripts, new top-level keys, peer-dep maneuvers) — exclude that PR from the batch. Note in the batch PR body's `Excluded` section. The maintainer can merge it serially.
+
+### Verification
+
+After regenerating the lockfile, run the same three commands Phase 2 uses: `pnpm lint`, `pnpm build`, `pnpm check:links`. This is the only verification step that actually matters in Phase 3 — each constituent was already verified individually. The combined verify catches **interaction effects** (two bumps that pass alone but break when co-installed).
+
+### Outcomes
+
+| #   | Condition                                                | Action                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| --- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| B1  | < 2 ready PRs after exclusions, or all file sets disjoint | Exit silently with one-line reason. Nothing changed.                                                                                                                                                                                                                                                                                                                                                                            |
+| B2  | Combined diff verifies clean                              | Open batch PR with `--auto --squash`. Each constituent: apply `ralphie:replaced-by-newer-pr`, post replacement comment pointing at batch, `gh pr close`. Originals stay reopenable in case rollback is needed.                                                                                                                                                                                                                  |
+| B3  | `pnpm install` or any verification step failed            | Discard the batch branch locally. **Do not** label or close constituents — they remain individually mergeable. Post a comment on each explaining batching failed with the cited error. The maintainer drains serially using GitHub's merge queue or by clicking through, possibly with `@dependabot rebase` for Dependabot ones along the way.                                                                                  |
+
+### Hard constraints for Phase 3
+
+- Branch off **fresh `origin/main`** (always `git fetch` first). Never trust local main — the wave that prompted building this feature was caused by branching off stale local state.
+- Never push to `main`, never push to a Dependabot branch, never modify `.github/`, CI workflows, `dependabot.yml`, or licensing files (same as Phase 1+2).
+- The batch PR auto-merges on green CI, but the maintainer can always cancel auto-merge or close the PR. Each constituent's closure is reversible — `gh pr reopen <#>` brings it back if the batch goes sideways.
+
+### Batch PR body shape
+
+```
+## Summary
+
+Batches <N> ready-to-merge dependency PRs into one merge to avoid a rebase cascade. Each constituent was individually verified clean in Phase 2; this PR re-verifies the combined diff for interaction effects.
+
+## Constituents
+
+- #A — <one-line summary> (replaces)
+- #B — <one-line summary> (replaces)
+- #C — <one-line summary> (replaces)
+
+## Resolved version conflicts
+
+- `<pkg>`: #A bumped to `<vA>`, #B bumped to `<vB>`. Taking the higher: `<vB>`.
+
+(Omit section if none.)
+
+## Excluded from batch
+
+- #D — <reason>: non-mechanical edit (scripts/peer-dep/etc.). Merge serially.
+
+(Omit section if none.)
+
+## Test plan
+
+- [x] `pnpm install` succeeds; lockfile regenerated cleanly from combined `package.json`
+- [x] `pnpm lint` — clean
+- [x] `pnpm build` — clean
+- [x] `pnpm check:links` — clean
+- [ ] CI green
+
+<AI-assistance disclosure per CONTRIBUTING.md>
+```
+
+### Comment shape (posted on each batched constituent)
+
+```
+Ralphie replaced this with #<batch-PR> as part of a wave-merge batch.
+
+Why: <N> PRs were ready-to-merge and overlapping on `package.json` + `pnpm-lock.yaml`. Batching avoids the rebase cascade after the first PR lands.
+
+Replacement: #<batch-PR>
+```
+
+### Comment shape (when batch verification failed and PR remains open)
+
+```
+Ralphie attempted to batch this with #<X>, #<Y>, #<Z>, but the combined verification failed:
+
+<fenced output of the failing pnpm command>
+
+Leaving this PR open for serial merge. The maintainer can drain individually; Dependabot will rebase on `@dependabot rebase` for any PR that goes stale after the first merge.
+```
 
 ## Alert sweep outcomes
 
