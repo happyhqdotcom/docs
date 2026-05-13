@@ -1,11 +1,13 @@
 #!/bin/bash
 set -o pipefail
 # Usage: ./dependency.sh [options]
-#   ./dependency.sh                          # triage + upgrade loop, default --max-deps 3
+#   ./dependency.sh                          # triage + upgrade + batch loop, default --max-deps 3
 #   ./dependency.sh --max-deps 5             # cap Phase 2 attempts at 5
 #   ./dependency.sh --triage-only            # Phase 1 only
-#   ./dependency.sh --upgrade-only           # skip Phase 1, run upgrade loop on the queue
-#   ./dependency.sh --pr 124                 # skip triage; one upgrade session against PR #124
+#   ./dependency.sh --upgrade-only           # skip Phase 1, run upgrade loop then batch
+#   ./dependency.sh --batch-only             # skip Phase 1+2, only batch the current ready set
+#   ./dependency.sh --no-batch               # skip Phase 3 (batching)
+#   ./dependency.sh --pr 124                 # skip triage; one upgrade session against PR #124 (no batch)
 #   ./dependency.sh --pr 124 --override      # bypass self-skip rules (size, verification) for that PR
 #   ./dependency.sh --dry-run                # Phase 1 preview only, no writes
 #   ./dependency.sh --pr 124 --dry-run       # preview a single upgrade session, no writes
@@ -21,6 +23,8 @@ RESET='\033[0m'
 MAX_DEPS=3
 TRIAGE_ONLY=0
 UPGRADE_ONLY=0
+BATCH_ONLY=0
+NO_BATCH=0
 SINGLE_PR=""
 DRY_RUN=""
 OVERRIDE=""
@@ -37,6 +41,14 @@ while [ $# -gt 0 ]; do
             ;;
         --upgrade-only)
             UPGRADE_ONLY=1
+            shift
+            ;;
+        --batch-only)
+            BATCH_ONLY=1
+            shift
+            ;;
+        --no-batch)
+            NO_BATCH=1
             shift
             ;;
         --pr)
@@ -72,6 +84,14 @@ if [ $UPGRADE_ONLY -eq 1 ] && [ -n "$DRY_RUN" ]; then
 fi
 if [ -n "$OVERRIDE" ] && [ -z "$SINGLE_PR" ]; then
     echo "Error: --override is only valid with --pr <#>. The Phase 2 auto-loop must always respect skip gates." >&2
+    exit 1
+fi
+if [ $BATCH_ONLY -eq 1 ] && { [ $TRIAGE_ONLY -eq 1 ] || [ $UPGRADE_ONLY -eq 1 ] || [ $NO_BATCH -eq 1 ]; }; then
+    echo "Error: --batch-only is mutually exclusive with --triage-only / --upgrade-only / --no-batch." >&2
+    exit 1
+fi
+if [ $BATCH_ONLY -eq 1 ] && [ -n "$SINGLE_PR" ]; then
+    echo "Error: --batch-only and --pr <#> are mutually exclusive." >&2
     exit 1
 fi
 
@@ -166,10 +186,16 @@ run_session() {
     return ${PIPESTATUS[1]}
 }
 
-# ── Single-PR mode: skip triage, run one upgrade session ──
+# ── Single-PR mode: skip triage, run one upgrade session, no batch ──
 if [ -n "$SINGLE_PR" ]; then
     export PR_NUMBER="$SINGLE_PR"
     run_session "PROMPT_dependency_upgrade.md" "Upgrade #$SINGLE_PR"
+    exit $?
+fi
+
+# ── Batch-only mode: skip Phase 1+2, run Phase 3 directly ──
+if [ $BATCH_ONLY -eq 1 ]; then
+    run_session "PROMPT_dependency_batch.md" "Phase 3 · Batch ready-to-merge PRs"
     exit $?
 fi
 
@@ -221,8 +247,8 @@ while [ $DEPS_DONE -lt $MAX_DEPS ]; do
     rm -f "$QUEUE_ERR"
 
     if [ -z "$NEXT" ]; then
-        echo -e "\n  ${GREEN}✓${RESET} Queue empty. $DEPS_DONE PR(s) attempted. Exiting."
-        exit 0
+        echo -e "\n  ${GREEN}✓${RESET} Queue empty. $DEPS_DONE PR(s) attempted."
+        break
     fi
 
     DEPS_DONE=$((DEPS_DONE + 1))
@@ -248,4 +274,23 @@ while [ $DEPS_DONE -lt $MAX_DEPS ]; do
     sleep 1
 done
 
-echo -e "\n  ${YELLOW}Reached --max-deps=$MAX_DEPS. Stopping.${RESET}"
+if [ $DEPS_DONE -ge $MAX_DEPS ]; then
+    echo -e "\n  ${YELLOW}Reached --max-deps=$MAX_DEPS.${RESET}"
+fi
+
+# ── Phase 3: Batch ready-to-merge PRs into a single PR (skipped with --no-batch) ──
+if [ $NO_BATCH -eq 1 ]; then
+    echo -e "\n  ${DIM}Skipping Phase 3 (--no-batch).${RESET}"
+    exit 0
+fi
+
+# Defensive: return to BASE_BRANCH before Phase 3 (same reason as the per-iteration
+# checkout above — the last Phase 2 session may have left the tree on a PR branch).
+git -C "$REPO_ROOT" checkout --quiet "$BASE_BRANCH" 2>/dev/null || true
+
+run_session "PROMPT_dependency_batch.md" "Phase 3 · Batch ready-to-merge PRs"
+BATCH_EXIT=$?
+if [ $BATCH_EXIT -ne 0 ]; then
+    echo -e "  ${RED}Batch session exited with status $BATCH_EXIT${RESET}"
+    exit $BATCH_EXIT
+fi
