@@ -67,6 +67,7 @@
   },
   "pnpm": {
     "overrides": {
+      "fast-xml-builder": "^1.1.7",
       "fast-xml-parser": ">=5.7.0",
       "postcss": "^8.5.10"
     }
