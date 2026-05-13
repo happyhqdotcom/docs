@@ -187,13 +187,29 @@ fi
 # ── Phase 2: Upgrade loop (one session per eligible PR — oldest first) ──
 DEPS_DONE=0
 while [ $DEPS_DONE -lt $MAX_DEPS ]; do
+    # Defensive: return the wrapper's working tree to BASE_BRANCH between
+    # iterations. The agent's session usually ends on BASE_BRANCH per the
+    # prompt, but if it didn't (early exit, crash, missed step) subsequent
+    # iterations could checkout a PR on top of stale state.
+    git -C "$REPO_ROOT" checkout --quiet "$BASE_BRANCH" 2>/dev/null || true
+
     # Queue: Dependabot PRs + Ralphie-opened security override PRs (chore/security-*),
     # excluding any with a terminal ralphie:* label.
+    QUEUE_ERR=$(mktemp)
     NEXT=$(gh pr list \
         --state open \
         --limit 100 \
         --json number,labels,createdAt,headRefName,author \
-        --jq '[.[] | select(.author.login == "app/dependabot" or (.headRefName | startswith("chore/security-"))) | select(.labels | map(.name) | any(startswith("ralphie:")) | not)] | sort_by(.createdAt) | .[0].number // empty' 2>/dev/null)
+        --jq '[.[] | select(.author.login == "app/dependabot" or (.headRefName | startswith("chore/security-"))) | select(.labels | map(.name) | any(startswith("ralphie:")) | not)] | sort_by(.createdAt) | .[0].number // empty' 2>"$QUEUE_ERR")
+    QUEUE_EXIT=$?
+
+    if [ $QUEUE_EXIT -ne 0 ]; then
+        echo -e "  ${RED}gh pr list failed (exit $QUEUE_EXIT) — surfacing stderr instead of silently treating queue as empty:${RESET}" >&2
+        cat "$QUEUE_ERR" >&2
+        rm -f "$QUEUE_ERR"
+        exit $QUEUE_EXIT
+    fi
+    rm -f "$QUEUE_ERR"
 
     if [ -z "$NEXT" ]; then
         echo -e "\n  ${GREEN}✓${RESET} Queue empty. $DEPS_DONE PR(s) attempted. Exiting."
