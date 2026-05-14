@@ -2,6 +2,8 @@
   "pages": [
     "---Start here---",
     "index",
-    "...start-here"
+    "...start-here",
+    "---Concepts---",
+    "concepts/streams"
   ]
 }

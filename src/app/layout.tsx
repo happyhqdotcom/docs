@@ -32,7 +32,7 @@ const SITE_URL =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    template: '%s - HappyHQ',
+    template: '%s | HappyHQ Docs',
     default: 'HappyHQ — The AI workspace for everyday work.',
   },
   description:
